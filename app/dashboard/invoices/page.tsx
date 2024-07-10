@@ -5,14 +5,17 @@ import Search from "@/app/ui/search";
 import { InvoicesTableSkeleton } from "@/app/ui/skeletons";
 import { Suspense } from "react";
 import Table from '@/app/ui/invoices/table';
+import { fetchInvoicesPages } from "@/app/lib/data";
 
-export default function Page({
+export default async function Page({
   searchParams,
 }: {
   searchParams?: { query?: string; page?: string };
 }) {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;
+
+  const totalPages = await fetchInvoicesPages(query)
 
   return (
     <div className="w-full">
@@ -30,7 +33,7 @@ export default function Page({
       </Suspense>
 
       <div className="mt-5 flex justify-center w-full">
-        {/* <Pagination totalPages={totalPages} /> */}
+        <Pagination totalPages={totalPages} />
       </div>
     </div>
   );
