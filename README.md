@@ -67,3 +67,7 @@ There are two ways you implement streaming in Next.js:
 
     - At the page level, with the loading.tsx file.
     - For specific components, with <Suspense>.
+
+--- 
+### Partial Prerendering:
+Partial Prerendering – a new rendering model that allows you to combine the benefits of static and dynamic rendering in the same route.
